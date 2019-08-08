@@ -5,21 +5,16 @@ import { Component, OnInit } from '@angular/core';
   template: `<h2>
               Welcome {{name}}
             </h2>
-            <input #myInput type="text" />
-            <button (click)="logMessage(myInput.value)">Log</button>
+            <input [(ngModel)]="name" type="text" /> {{name}}
             `,
   styles: []
 })
 
 export class TestComponent implements OnInit {
-  public name = "Natalia"
+  public name = ""
   public greeting = ""
 
-
   constructor() {}
-
   ngOnInit() {}
-  logMessage(val) {
-    console.log(val)
-  }
+
 }
