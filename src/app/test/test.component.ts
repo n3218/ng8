@@ -1,26 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  // selector: 'app-test',
-  // selector: '.app-test',
-  selector: '[app-test]',
-  // templateUrl: './test.component.html',
-  // template: '<div>Inline template</div>',
-  template: `<div>
-              Inline template
-            </div>`,
-  // styleUrls: ['./test.component.scss']
-  styles: [`
-    div {
-      color: red
-    }
-    `]
+  selector: 'app-test',
+  template: `
+    <div [ngSwitch]="color">
+      <div *ngSwitchCase="'red'">You picked red color</div>
+      <div *ngSwitchCase="'blue'">You picked blue color</div>
+      <div *ngSwitchCase="'green'">You picked green color</div>
+      <div *ngSwitchDefault>Pick again</div>
+              
+    </div>
+  `,
+
+  styles: []
 })
 export class TestComponent implements OnInit {
 
-  constructor() { }
+  public color = "orange"
 
-  ngOnInit() {
-  }
+  constructor() {}
+
+  ngOnInit() {}
 
 }
