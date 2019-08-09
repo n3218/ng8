@@ -16,7 +16,6 @@ export class TestComponent implements OnInit {
 
   public cities = ['Pleasanton', 'San Francisco', 'San Ramon', 'Dublin']
   public suggestionsList = []
-  public regex = ''
   constructor() {}
 
   ngOnInit() {}
