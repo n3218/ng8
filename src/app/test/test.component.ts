@@ -4,26 +4,45 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-test',
   template: `
-    <input #mySearch (keyup)="showSuggestions(mySearch.value)" type="text" placeholder="input search parameters" />
-    <ul>
-      <li *ngIf="mySearch.value==''">Suggestions</li>
-      <li *ngFor="let s of suggestionsList">{{s}}</li>
-    </ul>
+
+    <h2>{{ date }}</h2>
+    <h2>{{ date | date: 'short' }}</h2>
+    <h2>{{ date | date: 'shortDate' }}</h2>
+    <h2>{{ date | date: 'shortTime' }}</h2>
+
+    <h2>{{ name }}</h2>
+    <h2>{{ name | lowercase }}</h2>
+    <h2>{{ name | uppercase}}</h2>
+    <h2>{{ message | titlecase }}</h2>
+    <h2>{{ name | slice:2:5 }}</h2>
+    <h2>{{ person }}</h2>
+    <h2>{{ person | json }}</h2>
+
+    <h2>{{ 5.678 | number:'1.2-3' }}</h2>
+    <h2>{{ 5.678 | number:'3.4-5' }}</h2>
+    <h2>{{ 5.678 | number:'3.1-2' }}</h2>
+    <h2>{{ 0.25 | percent }}</h2>
+
+    <h2>{{ 0.25 | currency }}</h2>
+    <h2>{{ 0.25 | currency: 'GBP' }}</h2>
+    <h2>{{ 0.25 | currency: 'EUR' }}</h2>
+    <h2>{{ 0.25 | currency: 'EUR': 'code' }}</h2>
   `,
   styles: []
 })
+
 export class TestComponent implements OnInit {
 
-  public cities = ['Pleasanton', 'San Francisco', 'San Ramon', 'Dublin']
-  public suggestionsList = []
-  public regex = ''
+  public name = "Natalia"
+  public message = "Welcome to Angular 8"
+  public date = new Date()
+  public person = {
+    "firstname": "John",
+    "lastName": "Doe"
+  }
   constructor() {}
 
   ngOnInit() {}
 
-  showSuggestions(val) {
-    console.log(val)
-    let regex = new RegExp(val, 'gi')
-    this.suggestionsList = this.cities.filter(city => city.match(regex))
-  }
+
 }
