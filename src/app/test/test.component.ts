@@ -1,25 +1,29 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({
   selector: 'app-test',
   template: `
-    <h2>{{ "Hello " + name}}</h2>
-    <button (click)="eventFromChild()">Send Event</button>
-
+    <input #mySearch (keyup)="showSuggestions(mySearch.value)" type="text" placeholder="input search parameters" />
+    <ul>
+      <li *ngIf="mySearch.value==''">Suggestions</li>
+      <li *ngFor="let s of suggestionsList">{{s}}</li>
+    </ul>
   `,
   styles: []
 })
 export class TestComponent implements OnInit {
 
-  @Input('parentData') public name;
-  @Output() public childEvent = new EventEmitter();
-
+  public cities = ['Pleasanton', 'San Francisco', 'San Ramon', 'Dublin']
+  public suggestionsList = []
+  public regex = ''
   constructor() {}
 
   ngOnInit() {}
-  eventFromChild() {
-    this.childEvent.emit('Hey, I am an Event from ChildComponent')
-  }
 
+  showSuggestions(val) {
+    console.log(val)
+    let regex = new RegExp(val, 'gi')
+    this.suggestionsList = this.cities.filter(city => city.match(regex))
+  }
 }
