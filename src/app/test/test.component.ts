@@ -4,7 +4,8 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-test',
   template: `
-    <h2>{{ date }}</h2>
+    <h2>Welcome {{ name }}</h2>
+    <button (click)="onClick()">Greet</button>
   `,
   styles: []
 })
@@ -18,6 +19,10 @@ export class TestComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  onClick() {
+    console.log("Welcome to Angular 8")
+  }
 
 
 }
