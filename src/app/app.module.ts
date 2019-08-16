@@ -4,11 +4,13 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeeService } from './employee.service'
 import { HttpClientModule } from '@angular/common/http';
+import { PageNoFoundComponent } from './page-no-found/page-no-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    PageNoFoundComponent
   ],
   imports: [
     BrowserModule,
